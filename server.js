@@ -32,7 +32,6 @@ app.post('/sendEmail',cors(), (req, res)=>{
     let email = req.body.email;
     let message = req.body.message;
     let name = req.body.name;
-    let gif = req.body.gif;
 
     transporter.sendMail({
         from: email,
