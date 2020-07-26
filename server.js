@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 let auth;
@@ -18,6 +19,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.text());
