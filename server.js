@@ -33,8 +33,8 @@ app.post('/sendEmail', (req, res)=>{
     let gif = req.body.gif;
 
     transporter.sendMail({
-        from: 'nodemailbobthebot@gmail.com',
-        to: email,
+        from: email,
+        to: 'olindyla@gmail.com',
         subject: `${name}` ,
         html: `<h3>${message}</h3>`
         }, (err, info)=>{
