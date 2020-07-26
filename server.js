@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const app = express();
-app.use(cors());
+app.use();
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.text());
@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('./public'));
 
-app.post('/sendEmail', (req, res)=>{
+app.post('/sendEmail',cors(), (req, res)=>{
     let email = req.body.email;
     let message = req.body.message;
     let name = req.body.name;
