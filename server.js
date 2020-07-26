@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const cors = require('cors')
 let auth;
 
 if(process.env.NODE_ENV === 'production'){
@@ -18,6 +19,8 @@ const transporter = nodemailer.createTransport({
 });
 
 const app = express();
+app.use(cors())
+
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.text());
