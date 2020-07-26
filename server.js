@@ -18,7 +18,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const app = express();
-app.use();
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.text());
@@ -31,6 +30,7 @@ app.post('/sendEmail', (req, res)=>{
     let email = req.body.email;
     let message = req.body.message;
     let name = req.body.name;
+    let gif = req.body.gif;
 
     transporter.sendMail({
         from: email,
