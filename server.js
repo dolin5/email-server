@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 let auth;
@@ -28,7 +27,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('./public'));
 
-app.post('/sendEmail',cors(), (req, res)=>{
+app.post('/sendEmail', (req, res)=>{
     let email = req.body.email;
     let message = req.body.message;
     let name = req.body.name;
