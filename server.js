@@ -27,12 +27,12 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('./public'));
 
-app.post('/sendEmail', (req, res) => {
+app.post('/sendEmail', (req, res, next) => {
   let email = req.body.email;
   let message = req.body.message;
   let name = req.body.name;
   let gif = req.body.gif;
-  if (['http://localhost:8080','https://ng911datasync.com'].indexOf(req.headers.origin)>=0){
+  if (['http://localhost:8080', 'https://ng911datasync.com'].indexOf(req.headers.origin) >= 0) {
     transporter.sendMail({
       from: email,
       to: 'dylan@olingeographics.com',
@@ -50,6 +50,8 @@ app.post('/sendEmail', (req, res) => {
         });
       }
     });
+  } else {
+    next(new Error('wrong domain'));
   }
 });
 
